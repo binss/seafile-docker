@@ -1,4 +1,4 @@
-FROM seafileltd/base:16.04
+FROM binss/seafile-base
 
 # syslog-ng and syslog-forwarder would mess up the container stdout, not good
 # when debugging/upgrading.

@@ -7,7 +7,7 @@ ENV UPDATED_AT=20180412 \
 
 CMD ["/sbin/my_init", "--", "bash", "-l"]
 
-RUN apt-get update -qq && apt-get -qq -y install memcached mariadb-server nginx
+RUN apt-get update -qq && apt-get -qq -y install memcached nginx
 
 # Utility tools
 RUN apt-get install -qq -y vim htop net-tools psmisc git wget curl
@@ -34,11 +34,7 @@ RUN mkdir -p /etc/service/nginx && \
     mv /services/nginx.conf /etc/nginx/nginx.conf && \
     mv /services/nginx.sh /etc/service/nginx/run
 
-RUN mkdir -p /etc/service/mysql && \
-    mv /services/mysql.sh /etc/service/mysql/run
-
 RUN mkdir -p /etc/my_init.d && rm -f /etc/my_init.d/00_regen_ssh_host_keys.sh
-ADD my_init.d/99_mysql_setup.sh /etc/my_init.d/
 
 # Clean up for docker squash
 # See https://github.com/goldmann/docker-squash
