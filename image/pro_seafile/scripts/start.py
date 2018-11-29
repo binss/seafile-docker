@@ -49,8 +49,6 @@ def main():
 
     if is_https():
         init_letsencrypt()
-    generate_local_nginx_conf()
-    call('nginx -s reload')
 
     init_seafile_server()
 
